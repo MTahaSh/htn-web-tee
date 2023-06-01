@@ -4,8 +4,8 @@ import {v4 as uuid} from "uuid"
 import {cookies} from "next/headers"
 import { eq } from "drizzle-orm";
 
-cookies().get("user.id")?.value;
-fetch(`http://localhost:3000/api/cart?user_id=${cookies().get("user_id")?.value}`)
+// cookies().get("user.id")?.value;
+// fetch(`http://localhost:3000/api/cart?user_id=${cookies().get("user_id")?.value}`)
 
 
 export const GET = async (request: NextRequest) => {
