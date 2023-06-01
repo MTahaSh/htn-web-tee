@@ -56,9 +56,9 @@ export default async function Products() {
 
 
       {data.map((item)=>(
-        <div key={item._id}>
-        <ProductCart item={item}/>
-        </div>
+        
+        <ProductCart key={item._id} item={item}/>
+        
 
       ))}
       
