@@ -2,6 +2,7 @@ import { client } from '@/sanity/lib/client'
 import { urlForImage } from '@/sanity/lib/image'
 import { Item } from '@radix-ui/react-navigation-menu'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import {Image as IImage} from "sanity"
 
@@ -63,9 +64,12 @@ export default async function Xbox() {
 
       {data.map((item)=>(
          
-        
+         
+
+         
         item.category.name == "PlayStation"? 
         <div className="lg:w-1/3 sm:w-1/2 p-4" key={item._id}>
+        <Link href={`/Products/${item._id}`}>
         <div className="flex relative">
           <Image alt="products" className="absolute inset-0 w-full max-h-[300px] h-full object-contain object-center" src={urlForImage(item.image).url()} width={400} height={400}></Image>
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
@@ -74,8 +78,9 @@ export default async function Xbox() {
             <p className="leading-relaxed">{item.description}</p>
           </div>
         </div>
+        </Link>
       </div> : ""
-      
+     
       ))}
       
     </div>

@@ -5,6 +5,7 @@ import React from 'react'
 import {Image as IImage, renderStudio} from "sanity";
 import {ProductCart} from "@/components/productcart/ProductCart"
 import Product from '@/components/products/Product';
+import Link from 'next/link';
 
 const getData = async()=>{
   const res = await client.fetch(`*[_type == "products"] {
@@ -57,8 +58,9 @@ export default async function Products() {
 
       {data.map((item)=>(
         
-        <ProductCart key={item._id} item={item}/>
         
+        <ProductCart key={item._id} item={item}/>
+       
 
       ))}
       
