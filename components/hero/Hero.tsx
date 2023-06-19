@@ -18,7 +18,7 @@ import {
 
 
 
-export default async function Hero() {
+export default  function Hero() {
   const products = [
     {
       product: 1,
@@ -29,6 +29,7 @@ export default async function Hero() {
   ];
 
  
+
 
 
   const handleCheckout = async() => {
