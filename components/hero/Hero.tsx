@@ -14,7 +14,46 @@ import {
     NavigationMenuViewport,
   } from "@/components/ui/navigation-menu"
 
-export default function Hero() {
+  import getStripePromise from "@/lib/stripe"
+
+
+
+export default async function Hero() {
+  const products = [
+    {
+      product: 1,
+      name: "Stripe Product",
+      price: 400,
+      quantity: 3,
+    },
+  ];
+
+ 
+
+
+  const handleCheckout = async() => {
+    const stripe = await getStripePromise();
+    // console.log(getStripePromise);
+      
+    const response = await fetch("api/stripeSession/",{
+      method:"POST",
+      headers: {"Content-Type" : "application/json" },
+      cache: "no-cache",
+      body: JSON.stringify(products),
+    });
+    
+    const data = await response.json();
+
+    if(data.session )
+    {
+      stripe?.redirectToCheckout({sessionId: data.session.id});
+      
+    }
+
+
+  }
+
+
   return (
 
     <div className='flex px-4'>
@@ -28,8 +67,8 @@ export default function Hero() {
       <p className="mb-8 leading-relaxed">
 Unlock the gaming realm of your dreams at our Ecommerce site. Explore our curated selection of consoles, from the latest releases to timeless classics. Find unbeatable deals, exclusive bundles, and a seamless shopping experience. Level up your gaming journey with us.</p>
       <div className="flex justify-center">
-      <Button className="m-5">
-        <ShoppingCart className="mr-2 h-5 w-5" /> Start Shopping
+      <Button className="m-5" onClick={handleCheckout}>
+        <ShoppingCart className="mr-2 h-5 w-5 flex-shrink-0" /> Start Shopping
       </Button>
       </div>
     </div>
