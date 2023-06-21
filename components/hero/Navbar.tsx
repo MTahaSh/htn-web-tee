@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { Search, ShoppingCart, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '@/store/store'
 
 import Link from "next/link";
 
@@ -15,6 +17,8 @@ const Navbar = () => {
     setClick(!click);
   
   }
+
+  const cartValue = useSelector((state:RootState)=> state.cartSlice.totalQuantity );
 
   return (
     <div className="relative h-full">
@@ -53,7 +57,7 @@ const Navbar = () => {
       <div className="p-2 rounded-full bg-gray-300">
         <ShoppingCart className="relative cursor-pointer" />
         <span className="absolute top-2 right-20 h-6 w-6 text-center rounded-full bg-[#f02d34] text-white">
-          0
+          {cartValue}
         </span>
       </div>
     </nav>

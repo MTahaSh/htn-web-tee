@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import {Image as IImage, renderStudio} from "sanity";
 import {ProductCart} from "@/components/productcart/ProductCart"
-import Product from '@/components/products/Product';
+import Product from '@/app/Products/page';
 import Link from 'next/link';
 
 const getData = async()=>{
