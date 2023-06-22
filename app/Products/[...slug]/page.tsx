@@ -53,7 +53,7 @@ console.log(result);
   return (
     <div>
       {result.map((item)=>(
-        <section className="text-gray-600 body-font w-full overflow-hidden">
+        <section key={item._id} className="text-gray-600 body-font w-full overflow-hidden">
         <div className="container px-5 py-24 mx-auto flex">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
