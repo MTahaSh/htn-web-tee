@@ -26,7 +26,7 @@ const AddToCart = () => {
     }
     return(
         
-        <div><button onClick={handleAddToCart} className='bg-blue-400 px-6 py-2 border rounded-lg text-white'>Add to cart</button></div>
+        <div><button onClick={handleAddToCart} className='bg-black px-6 py-2 border rounded-lg text-white'>Add to cart</button></div>
 
     )
 }
