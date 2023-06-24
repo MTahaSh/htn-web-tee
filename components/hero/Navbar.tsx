@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <div className="relative h-full">
-    <nav className="flex  justify-between items-center h-20 px-20 fixed w-full bg-white z-10">
+    <nav className="flex shadow-gray-200 shadow-sm  justify-between items-center h-20 px-20 fixed w-full bg-white z-10">
       
       <button onClick={onClickHandler}><Menu  className="lg:hidden flex cursor-pointer"/></button>
       <Link href={"/"}><Image src={"/logoRemove.png"} alt="website logo" width={200} height={200} /></Link>
@@ -55,10 +55,12 @@ const Navbar = () => {
         ></input>
       </div>
       <div className="p-2 rounded-full bg-gray-300">
+        <Link href={"/ShoppingCart"}>
         <ShoppingCart className="relative cursor-pointer" />
         <span className="absolute top-2 right-20 h-6 w-6 text-center rounded-full bg-[#f02d34] text-white">
           {cartValue}
         </span>
+        </Link>
       </div>
     </nav>
     </div>

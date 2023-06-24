@@ -1,9 +1,14 @@
+"use client"
 import React from 'react'
 import AddToCart from './AddToCart'
 import {Image as IImage, renderStudio} from "sanity";
 import { client } from '@/sanity/lib/client'
 import Image from 'next/image';
 import { urlForImage } from '@/sanity/lib/image';
+import { cartActions } from '@/store/slice/cartSlice'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store/store'
+import { Quantity } from '../Quantity';
 
 const getData = async()=>{
   const res = await client.fetch(`*[_type == "products"] {
@@ -39,13 +44,18 @@ interface Iproduct{
 
 export default async function page({params}: {params:{key: string, slug:string}}) {
   const data: Iproduct[] = await getData();
+ 
+
 
   const getProductDetail = (id:string) => {
     return data.filter((item)=>item._id == id)
   }
 
+  
 const result = getProductDetail(params.slug);
-console.log(result);
+// console.log(result);
+
+
 
 
 
@@ -66,20 +76,18 @@ console.log(result);
               </div>
               
               
-              <div className="flex border-t border-b mb-6 border-gray-200 py-2 ">
-                <span className="text-gray-500 self-center">Quantity</span>
+              <div className="flex border-b mb-6 border-gray-200 py-2 ">
+                {/* <span className="text-gray-500 self-center">Quantity</span>
                 
-                
-                <button className='ml-auto rounded-full w-10 h-10  p-0 border-0 inline-flex items-center justify-center bg-red-600 text-white mr-4'>-</button>
-                <span className=" text-gray-900 text-center self-center">4</span>
-                <button className='rounded-full w-10 h-10 bg-red-600 p-0 border-0 inline-flex items-center justify-center  text-white ml-4'>+</button>
-                
+
+                <Quantity key={item._id} item={item}/>
+                 */}
               </div>
               <div className="flex justify-between">
                 <span className="title-font font-medium text-2xl text-gray-900">${item.price}</span>
               
                 <div className='flex  text-white '>
-                <AddToCart/>
+                <AddToCart key={item._id} item={item} />
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
