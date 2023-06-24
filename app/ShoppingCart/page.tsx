@@ -52,7 +52,7 @@ const handleIncrement = (productId: string, quantity: number) => {
       <div className="mt-8">
         <ul className="space-y-4">
         {cartValue.map((item)=>(
-          <li className="flex items-center gap-4">
+          <li key={item._id} className="flex items-center gap-4">
 
             
              <Image alt={`${item.title}`} className=" lg:w-1/6 w-full lg:h-auto h-64 object-contain object-center rounded" src={urlForImage(item.image).url()} width={400} height={400}></Image>
