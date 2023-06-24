@@ -93,7 +93,7 @@ import { ProductDetail } from './ProductDetail';
       <div>
         
           {result.map((item)=>(
-            <ProductDetail item={item}/>
+            <ProductDetail key={item._id} item={item}/>
 
           ))}
                   
