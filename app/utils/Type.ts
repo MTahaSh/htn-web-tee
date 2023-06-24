@@ -2,7 +2,7 @@ import {Image as IImage} from "sanity";
 
 
 
-export interface Iproduct{
+export interface IProduct{
   
     _id:string,
     title:string,

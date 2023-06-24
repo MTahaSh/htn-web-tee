@@ -1,4 +1,4 @@
-import { Iproduct } from "./Type";
+import { IProduct } from "./Type";
 import { client } from '@/sanity/lib/client'
 
 const getData = async()=>{
@@ -16,9 +16,9 @@ const getData = async()=>{
   }
 
 
- const MyData =  async(): Promise<Iproduct[]> => {
+ const MyData =  async(): Promise<IProduct[]> => {
 
-    const data: Iproduct[] = await getData();
+    const data: IProduct[] = await getData();
     return data;
   }
 
