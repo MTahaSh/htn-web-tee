@@ -129,7 +129,7 @@ const handleIncrement = (productId: string, quantity: number) => {
             </dl>
 
             <div className="flex justify-end">
-              <Checkout/>
+              <Checkout key={"items"}/>
             </div>
           </div>
         </div>
