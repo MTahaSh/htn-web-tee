@@ -1,3 +1,4 @@
+"use client"
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '@/store/slice/cartSlice'; 
 import toast from 'react-hot-toast';
@@ -5,6 +6,7 @@ import { Image as IImage } from "sanity";
 import { FC } from 'react';
 import { RootState } from '@/store/store';
 import { useState } from 'react';
+
 
 interface IProduct {
   _id: string;
