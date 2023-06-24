@@ -2,7 +2,7 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const url = 'https://gy7x3x34.apicdn.sanity.io/v2023-05-30/data/query/production?query=*%5B_type+%3D%3D+%22products%22%5D+%7B%0A++++++++++_id%2C%0A++++++++++title%2C%0A++++++++++description%2C%0A++++++++++price%2C%0A++++++++++image%2C%0A++++++++++category+-%3E+%7B%0A++++++++++++name%0A++++++++++%7D%0A++++++++%7D&%24id=%221fb5ffc8-e7da-40d4-af46-5bc928374baf%22';
+  const url = 'https://gy7x3x34.apicdn.sanity.io/v2023-05-30/data/query/production';
   
   try {
     const response = await fetch(url);
