@@ -124,7 +124,7 @@ const handleIncrement = (productId: string, quantity: number) => {
 
               <div className="flex justify-between !text-base font-medium">
                 <dt>Total</dt>
-                <dd>£{totalAmount.toPrecision()}</dd>
+                <dd>£{totalAmount.toFixed()}</dd>
               </div>
             </dl>
 
