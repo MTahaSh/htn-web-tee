@@ -8,7 +8,7 @@ import { urlForImage } from '@/sanity/lib/image';
 import { cartActions } from '@/store/slice/cartSlice'
 import { Checkout } from './Checkout'
 
-export default function page() {
+export default function Page() {
   
   const cartValue = useSelector((state:RootState)=> state.cartSlice.items);
   const totalQuantity = useSelector((state:RootState)=> state.cartSlice.totalQuantity);

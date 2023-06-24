@@ -40,7 +40,7 @@ interface Iproduct{
 }
 
 
-export default async function Xbox() {
+export default async function Playstation() {
 
   const data : Iproduct[] = await getData();
 

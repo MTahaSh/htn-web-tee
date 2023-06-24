@@ -42,7 +42,7 @@ interface Iproduct{
 
 
 
-export default async function page({params}: {params:{key: string, slug:string}}) {
+export default async function Page({params}: {params:{key: string, slug:string}}) {
   const data: Iproduct[] = await getData();
  
 
