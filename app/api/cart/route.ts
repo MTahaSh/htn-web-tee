@@ -40,7 +40,7 @@ export const POST = async (request: NextRequest) => {
 
     try {
         const res = await db.insert(cartTable).values({
-            product_id: req.product_id,
+            email: "taharizwan2k@gmail.com",
             quantity: 1,
             user_id: user_id as string
         }).returning();

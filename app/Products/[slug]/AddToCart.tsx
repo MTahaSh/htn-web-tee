@@ -49,7 +49,7 @@ const AddToCart: FC<{ item: IProduct }> = ({ item }) => {
   
   return (
     <div>
-      <button onClick={handleAddToCart} className='bg-black px-6 py-2 border rounded-lg text-white'>
+      <button onClick={handleAddToCart} className='bg-black px-6 py-2 hover:text-green-500 font-bold rounded-lg text-white'>
         Add to cart
       </button>
     </div>

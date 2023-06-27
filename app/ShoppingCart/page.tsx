@@ -44,31 +44,31 @@ const handleIncrement = (productId: string, quantity: number) => {
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
     <div className="mx-auto max-w-3xl">
       <header className="text-center">
-        <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
+        <h1 className="text-xl font-bold  text-gray-900 sm:text-3xl">Your Cart</h1>
       </header>
 
 
 
-      <div className="mt-8">
+      <div className="mt-8 " >
         <ul className="space-y-4">
         {cartValue.map((item)=>(
-          <li key={item._id} className="flex items-center gap-4">
+          <li key={item._id} className="flex items-center lg:flex-row flex-col shadow-lg  px-4 py-6 lg:space-y-0 space-y-5  gap-4">
 
             
              <Image alt={`${item.title}`} className=" lg:w-1/6 w-full lg:h-auto h-64 object-contain object-center rounded" src={urlForImage(item.image).url()} width={400} height={400}></Image>
           
             <div>
-              <h3 className="text-sm text-gray-900">{item.title}</h3>
+              <h3 className="text-md font-bold text-gray-900">{item.title}</h3>
 
               <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                 <div>
-                  <dt className="inline">Category: </dt>
-                  <dd className="inline">Xbox</dd>
+                  <dt className="inline font-bold text-lg ">Category: </dt>
+                  <dd className="inline font-bold text-lg">Xbox</dd>
                 </div>
 
                 <div>
-                  <dt className="inline">Price: </dt>
-                  <dd className="inline">£{item.price}</dd>
+                  <dt className="inline font-bold text-lg">Price: </dt>
+                  <dd className="inline font-bold text-lg">£{item.price}</dd>
                 </div>
               </dl>
             </div>
@@ -77,14 +77,14 @@ const handleIncrement = (productId: string, quantity: number) => {
             <div className="flex items-center gap-2">
                 
             <button onClick={() => handleDecrement(item._id, item.quantity)}
-                      className="text-gray-600 transition hover:text-red-600"
+                      className="text-gray-600  font-bold text-xl transition hover:text-red-600"
                     >-</button>
                 
-                <span  > {item.quantity} </span>
+                <span className='text-2xl' > {item.quantity} </span>
                 
 
                 <button onClick={() => handleIncrement(item._id, item.quantity)}
-                      className="text-gray-600 transition hover:text-green-600"
+                      className="text-gray-600 font-bold text-xl transition hover:text-green-600"
                     >+</button>
                 </div>
 
@@ -99,7 +99,7 @@ const handleIncrement = (productId: string, quantity: number) => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="h-4 w-4"
+                  className="h-8 w-8"
                 >
                   <path
                     stroke-linecap="round"

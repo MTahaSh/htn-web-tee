@@ -4,6 +4,7 @@ import { Search, ShoppingCart, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/store/store'
+import { UserButton } from "@clerk/nextjs";
 
 import Link from "next/link";
 
@@ -21,8 +22,8 @@ const Navbar = () => {
   const cartValue = useSelector((state:RootState)=> state.cartSlice.totalQuantity );
 
   return (
-    <div className="relative h-full">
-    <nav className="flex shadow-gray-200 shadow-sm  justify-between items-center h-20 px-20 fixed w-full bg-white z-10">
+    <div className="relative h-full z-10">
+    <nav className="flex shadow-gray-200  shadow-sm  justify-between items-center h-20 px-5 fixed w-full bg-white ">
       
       <button onClick={onClickHandler}><Menu  className="lg:hidden flex cursor-pointer"/></button>
       <Link href={"/"}><Image src={"/logoRemove.png"} alt="website logo" width={200} height={200} /></Link>
@@ -54,15 +55,22 @@ const Navbar = () => {
           className="rounded-r"
         ></input>
       </div>
+      <div className="border-4 rounded-full border-green-500 ">
+      <UserButton  afterSignOutUrl="/sign-in"/>
+      </div>
       <div className="p-2 rounded-full bg-gray-300">
         <Link href={"/ShoppingCart"}>
         <ShoppingCart className="relative cursor-pointer" />
-        <span className="absolute top-2 right-20 h-6 w-6 text-center rounded-full bg-[#f02d34] text-white">
+        <span className="absolute top-2 right-5 h-6 w-6 text-center rounded-full bg-[#f02d34] text-white">
           {cartValue}
         </span>
-        </Link>
+        </Link>  
       </div>
+      
+    
+      
     </nav>
+    
     </div>
   );
 };
