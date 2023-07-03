@@ -14,8 +14,8 @@ export default function Page() {
 
   const { userId, sessionId } = auth();
   
-    console.log("User ID: " + userId);
-    console.log("Session Id: "+sessionId);
+    // console.log("User ID: " + userId);
+    // console.log("Session Id: "+sessionId);
     
     
     
