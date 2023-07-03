@@ -51,7 +51,7 @@ import { ProductDetail } from './ProductDetail';
 
     
   const result = getProductDetail(params.slug);
-  console.log(result);
+  // console.log(result);
 
 
   // const [data, setData] = useState<IProduct[]>([]);

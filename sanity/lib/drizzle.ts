@@ -5,11 +5,11 @@ import { sql } from "@vercel/postgres";
 export const cartTable = pgTable("cart", {
   user_id: varchar("user_id", {
     length: 255,
-  }).notNull(),
-  email: varchar("email", {
+  }).primaryKey().notNull(),
+  session_id: varchar("session_id", {
     length: 255,
-  }).notNull(),
-  quantity: integer("quantity").notNull(),
+  }),
+
 });
 
 export const db = drizzle(sql, {
@@ -17,3 +17,8 @@ export const db = drizzle(sql, {
     cartTable,
   },
 });
+
+// export const getCart = async () => {
+//   const selectResult = await db.select().from(cartTable);
+//   console.log('Results', selectResult);
+// };
