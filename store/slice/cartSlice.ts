@@ -10,11 +10,17 @@ export interface cartState {
   totalQuantity: number;
 }
 
+// const savedUserId = localStorage.getItem("userId");
+const savedCartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+const savedTotalQuantity = savedCartItems.reduce((total:any, item:any) => total + item.quantity, 0);
+const savedTotalAmount = savedCartItems.reduce((total:any, item:any) => total + item.totalPrice, 0);
+
 const initialState: cartState = {
-  items: [],
-  totalAmount: 0,
-  totalQuantity: 0
-}
+  items: savedCartItems,
+  totalAmount: savedTotalAmount,
+  totalQuantity: savedTotalQuantity,
+};
+
 
 export const cartSlice = createSlice({
   name: 'counter',
@@ -28,7 +34,7 @@ export const cartSlice = createSlice({
       state.totalQuantity += action.payload.quantity;
       state.totalAmount += action.payload.quantity * action.payload.product.price;
 
-
+      
 
       if(!alreadyExistingProduct)
       {
@@ -38,6 +44,15 @@ export const cartSlice = createSlice({
           quantity,
           totalPrice,
         });
+
+        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+        cartItems.push({
+        ...newProduct,
+        quantity,
+        totalPrice,
+    });
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
       }
       else 
       {
@@ -45,6 +60,13 @@ export const cartSlice = createSlice({
 
         alreadyExistingProduct.quantity += action.payload.quantity;
         alreadyExistingProduct.totalPrice = totalPrice;
+        
+        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+        const existingIndex = cartItems.findIndex((item:any) => item._id === alreadyExistingProduct._id);
+        cartItems[existingIndex] = alreadyExistingProduct;
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
+
 
       }
       
@@ -61,6 +83,12 @@ export const cartSlice = createSlice({
     state.totalAmount -= existingProduct.totalPrice;
     state.items.splice(existingProductIndex, 1);
 
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    const removeIndex = cartItems.findIndex((item:any) => item._id === existingProduct._id);
+    cartItems.splice(removeIndex, 1);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
+
     if(state.totalQuantity === 0)
     {
       state.totalAmount = 0;
@@ -73,18 +101,23 @@ export const cartSlice = createSlice({
     updateQuantity: (state: cartState, action: PayloadAction<{ productId: string; quantity: number }>) => {
       const { productId, quantity } = action.payload;
       const item = state.items.find((item) => item._id === productId);
-
+    
       if (item) {
         const quantityDifference = quantity - item.quantity;
         const priceDifference = item.price * quantityDifference;
-
+    
         item.quantity = quantity;
         item.totalPrice += priceDifference;
-
+    
         state.totalQuantity += quantityDifference;
         state.totalAmount += priceDifference;
+    
+        // Update localStorage
+        localStorage.setItem("cartItems", JSON.stringify(state.items));
+        // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
       }
     },
+    
 
     incrementQuantity: (state: cartState, action: PayloadAction<{productId: string; quantity: number}>) => {
       const productId = action.payload;
@@ -95,6 +128,8 @@ export const cartSlice = createSlice({
         item.totalPrice += item.price;
         state.totalQuantity += 1;
         
+        localStorage.setItem("cartItems", JSON.stringify(state.items));
+        // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
       }
       
     },
@@ -106,6 +141,9 @@ export const cartSlice = createSlice({
         item.quantity -= 1;
         item.totalPrice -= item.price;
         state.totalQuantity -= 1;
+
+        localStorage.setItem("cartItems", JSON.stringify(state.items));
+        // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
       }
     },
 

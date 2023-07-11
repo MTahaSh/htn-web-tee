@@ -4,26 +4,46 @@ import {ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image"
 // import {useRouter} from 'next/router';
+import { useUser } from '@clerk/nextjs';
+import { useEffect } from 'react';
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-  } from "@/components/ui/navigation-menu"
 import Link from 'next/link';
 
   
 
 
-export default  function Hero() {
-  
-  
+export default  function Hero({userId}:any) {
+  const { isLoaded, isSignedIn, user } = useUser()
+  const { refresh } = useRouter();
+  const dispatch = useDispatch();
+  const router = useRouter();
+  // const [hasReloaded, setHasReloaded] = useState(false);
 
+
+
+  const clearUserData = () => {
+    localStorage.removeItem('userId');
+      localStorage.removeItem('cartItems');
+      // refresh();
+      // setHasReloaded(true);
+      
+  };
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      clearUserData();
+    } else {
+      refresh();
+      localStorage.setItem('userId', userId ?? '');
+      
+    }
+  }, [isSignedIn, userId]);
+
+ 
+  
 
   return (
 

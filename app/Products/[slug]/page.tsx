@@ -8,6 +8,8 @@
   import { useState, useEffect } from 'react';
 import { ProductDetail } from './ProductDetail';
 
+
+
   const getData = async()=>{
     const res = await client.fetch(`*[_type == "products"] {
       _id,

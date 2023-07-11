@@ -2,8 +2,15 @@ import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 
+
 export default function Product() {
+
+  
+ 
+   
+ 
   return (
+    
 
 
     <div className='border-b-2 w-full border-gray-200 border-solid'>

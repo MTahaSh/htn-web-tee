@@ -13,7 +13,7 @@ import { auth } from '@clerk/nextjs';
 export default function Page() {
 
   const { userId, sessionId } = auth();
-  
+  // localStorage.setItem("userId", userId !== null ? userId : "");
     // console.log("User ID: " + userId);
     // console.log("Session Id: "+sessionId);
     

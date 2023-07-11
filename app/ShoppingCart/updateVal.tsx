@@ -12,6 +12,9 @@ import { useUser } from '@clerk/nextjs';
 import { useEffect } from 'react'
 import { useRouter } from "next/navigation";
 
+
+
+
 export default function UpdateVal({userId,sessionId}:any) {
     const cartValue = useSelector((state:RootState)=> state.cartSlice.items);
     const totalQuantity = useSelector((state:RootState)=> state.cartSlice.totalQuantity);
@@ -22,20 +25,65 @@ export default function UpdateVal({userId,sessionId}:any) {
     const { refresh } = useRouter();
 
     
-      const updateCartValues = async () => {
-        const res = await fetch("/api/cart", {
-          method: "POST",
-          body: JSON.stringify({
-            userid: userId,
-            sessionid: sessionId,
-          })
+    // const [data,setData] = useState();
+    // interface IData {
+    //   user_id: string,
+    //   session_id: string
+    // }
+
+    // const getData = async () => {
+      
+    //   const res = await fetch(`/api/cart/${}`,
+    //   {
+    //     method:"GET",
+    //     cache:"no-store",
+    //     headers:{
+    //         "content-type": "application/json"
+    //   }
+    
+    // }) 
+    // return res.json();
+
+    // }
+    
+
+    const productId = cartValue.map((item)=> item._id );
+    const quantity = cartValue.map((item)=> item.quantity );
+
+
+    console.log("Cart Values: " + productId[0]);
+
+
+    const updateNewCartValues = async () => {
+      
+      const res = await fetch("/api/user", {
+        method: "POST",
+        body: JSON.stringify({
+          userid: userId,
+          sessionid: sessionId,
+          productid: productId,
+          qty: totalQuantity,
+
         })
+      })
+      
+    }
+    
+      // const updateCartValues = async () => {
+      //   const res = await fetch("/api/cart", {
+      //     method: "POST",
+      //     body: JSON.stringify({
+      //       userid: userId,
+      //       sessionid: sessionId,
+      //     })
+      //   })
         
-      }
+      // }
 
     useEffect(() => {
-        
-      updateCartValues();
+      // updateCartValues();
+      updateNewCartValues();
+
     }, []);
 
         
@@ -100,7 +148,7 @@ export default function UpdateVal({userId,sessionId}:any) {
                 <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                   <div>
                     <dt className="inline font-bold text-lg ">Category: </dt>
-                    <dd className="inline font-bold text-lg">Xbox</dd>
+                    <dd className="inline font-bold text-lg">{item.category.name}</dd>
                   </div>
   
                   <div>

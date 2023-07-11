@@ -6,6 +6,11 @@ import { Image as IImage } from "sanity";
 import { FC } from 'react';
 import { RootState } from '@/store/store';
 import { useState } from 'react';
+// import { auth } from '@clerk/nextjs';
+import { useEffect } from 'react';
+
+// const { userId, sessionId } = auth();
+
 
 
 interface IProduct {
@@ -17,6 +22,7 @@ interface IProduct {
   category: {
     name: string;
   };
+ 
 }
 
 const AddToCart: FC<{ item: IProduct }> = ({ item }) => {
@@ -29,23 +35,40 @@ const AddToCart: FC<{ item: IProduct }> = ({ item }) => {
   //   dispatch(cartActions.updateQuantity({ productId: item._id, quantity }));
   // };
 
+// console.log(cartItem);
 
 
 
 
   const handleAddToCart = () => {
-    // const updatedQuantity = cartItem ? cartItem.quantity;
+  const { _id, title, description, price, image, category } = item;
+  const product = { _id, title, description, price, image, category };
 
-    const { _id, title, description, price, image, category } = item;
-    const product = { _id, title, description, price, image, category };
+  // Dispatch the addToCart action to update the cart state
+  dispatch(cartActions.addToCart({ product, quantity: 1, price }));
+  toast.success("Product has been added to the Cart!");
 
+  // Retrieve cart data from localStorage
+  // const storedCartValue = localStorage.getItem('cartValue');
+  // const storedTotalQuantity = localStorage.getItem('totalQuantity');
+  // const storedTotalAmount = localStorage.getItem('totalAmount');
 
+  // // Parse the JSON strings from localStorage
+  // const parsedCartValue = storedCartValue ? JSON.parse(storedCartValue) : [];
+  // const parsedTotalQuantity = storedTotalQuantity ? parseInt(storedTotalQuantity) : 0;
+  // const parsedTotalAmount = storedTotalAmount ? parseFloat(storedTotalAmount) : 0;
 
-    // handleQuantityChange();
+  // // Update the cart data with the new item
+  // const updatedCartValue = [...parsedCartValue, product];
+  // const updatedTotalQuantity = parsedTotalQuantity + 1;
+  // const updatedTotalAmount = parsedTotalAmount + price;
 
-    dispatch(cartActions.addToCart({ product, quantity:  1, price }));
-    toast.success("Product has been added to the Cart!");
-  };
+  // // Save the updated cart data to localStorage
+  // localStorage.setItem('cartValue', JSON.stringify(updatedCartValue));
+  // localStorage.setItem('totalQuantity', JSON.stringify(updatedTotalQuantity));
+  // localStorage.setItem('totalAmount', JSON.stringify(updatedTotalAmount));
+};
+
   
   return (
     <div>
