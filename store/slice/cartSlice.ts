@@ -10,7 +10,7 @@ export interface cartState {
   totalQuantity: number;
 }
 
-// const savedUserId = localStorage.getItem("userId");
+// const savedUserId = localStorage.getItem("userId");  
 const savedCartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 const savedTotalQuantity = savedCartItems.reduce((total:any, item:any) => total + item.quantity, 0);
 const savedTotalAmount = savedCartItems.reduce((total:any, item:any) => total + item.totalPrice, 0);

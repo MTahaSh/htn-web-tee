@@ -6,7 +6,8 @@ import { ClerkProvider } from '@clerk/nextjs'
 import Image from 'next/image'
 import { Image as IImage } from 'sanity'
 import { auth } from '@clerk/nextjs';
-
+import { Suspense } from 'react'
+import Album from '@/components/Album'
 
 
 export default function Home() {

@@ -47,42 +47,42 @@ export default function UpdateVal({userId,sessionId}:any) {
     // }
     
 
-    const productId = cartValue.map((item)=> item._id );
-    const quantity = cartValue.map((item)=> item.quantity );
+    // const productId = cartValue.map((item)=> item._id );
+    // const quantity = cartValue.map((item)=> item.quantity );
 
 
-    console.log("Cart Values: " + productId[0]);
+    // console.log("Cart Values: " + productId[0]);
 
 
-    const updateNewCartValues = async () => {
+    // const updateNewCartValues = async () => {
       
-      const res = await fetch("/api/user", {
-        method: "POST",
-        body: JSON.stringify({
-          userid: userId,
-          sessionid: sessionId,
-          productid: productId,
-          qty: totalQuantity,
+    //   const res = await fetch("/api/user", {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       userid: userId,
+    //       sessionid: sessionId,
+    //       productid: productId,
+    //       qty: totalQuantity,
 
-        })
-      })
+    //     })
+    //   })
       
-    }
+    // }
     
-      // const updateCartValues = async () => {
-      //   const res = await fetch("/api/cart", {
-      //     method: "POST",
-      //     body: JSON.stringify({
-      //       userid: userId,
-      //       sessionid: sessionId,
-      //     })
-      //   })
+      const updateCartValues = async () => {
+        const res = await fetch("/api/cart", {
+          method: "POST",
+          body: JSON.stringify({
+            userid: userId,
+            sessionid: sessionId,
+          })
+        })
         
-      // }
+      }
 
     useEffect(() => {
-      // updateCartValues();
-      updateNewCartValues();
+      updateCartValues();
+      // updateNewCartValues();
 
     }, []);
 
