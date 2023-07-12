@@ -41,7 +41,7 @@ export const ProductDetail: FC<{item:any}> = ({item}) =>  {
                     */}
                   </div>
                   <div className="flex justify-between">
-                    <span className="title-font font-bold text-2xl text-gray-900">${item.price}</span>
+                    <span className="title-font font-bold text-2xl text-gray-900">£{item.price}</span>
                   
                     <div className='flex  text-white '>
                     <AddToCart key={item._id} item={item}/>
