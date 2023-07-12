@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { cartActions } from '@/store/slice/cartSlice';
 
 import Link from 'next/link';
 
@@ -16,7 +17,7 @@ import Link from 'next/link';
 
 
 export default  function Hero({userId}:any) {
-  const { isLoaded, isSignedIn, user } = useUser()
+  const { isLoaded, isSignedIn, user } = useUser();
   const { refresh } = useRouter();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -24,23 +25,16 @@ export default  function Hero({userId}:any) {
 
 
 
-  const clearUserData = () => {
-    localStorage.removeItem('userId');
-      localStorage.removeItem('cartItems');
-      // refresh();
-      // setHasReloaded(true);
-      
-  };
 
   useEffect(() => {
     if (!isSignedIn) {
-      clearUserData();
+      dispatch(cartActions.clearCart());
     } else {
-      refresh();
+      
       localStorage.setItem('userId', userId ?? '');
       
     }
-  }, [isSignedIn, userId]);
+  }, [isSignedIn, userId,dispatch]);
 
  
   

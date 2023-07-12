@@ -147,8 +147,12 @@ export const cartSlice = createSlice({
       }
     },
 
-    clearCart: (state) => {
-      state = initialState
+    clearCart: (state: cartState) => {
+      // state = initialState
+      state.items = [];
+      state.totalAmount = 0;
+      state.totalQuantity = 0;
+      localStorage.removeItem('cartItems');
     },
   },
 })

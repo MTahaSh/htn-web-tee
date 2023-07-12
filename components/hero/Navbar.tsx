@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/store/store'
 import { UserButton } from "@clerk/nextjs";
+import { useUser } from '@clerk/nextjs';
+import { SignIn } from "@clerk/nextjs";
 
 import Link from "next/link";
 
@@ -12,6 +14,7 @@ import Link from "next/link";
 
 
 const Navbar = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
   const [click,setClick] = useState(false)
   
   const onClickHandler = ()=>{
@@ -55,8 +58,11 @@ const Navbar = () => {
           className="rounded-r"
         ></input>
       </div>
-      <div className="border-4 rounded-full border-green-500 ">
-      <UserButton  afterSignOutUrl="/sign-in"/>
+      <div className={`border-4 rounded-full border-green-500 ${!isSignedIn?"hidden":"flex"}`}>
+      <UserButton  afterSignOutUrl="/"/>
+      </div>
+      <div className={`text-md ${!isSignedIn?"inline-block":"hidden"}`}>
+      <Link href={"/sign-in"}>Sign In</Link>
       </div>
       <div className="p-2 rounded-full bg-gray-300">
         <Link href={"/ShoppingCart"}>

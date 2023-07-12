@@ -15,6 +15,14 @@ export async function POST (request: NextRequest) {
     try {
     if(data.length > 0)
     {
+        const { submit_type } = data;
+      if (submit_type === "pay") {
+        // Clear cartItems from localStorage
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("cartItems");
+        }
+      }
+
         const session = await stripe.checkout.sessions.create({
             submit_type:"pay",
             mode: 'payment',
@@ -23,6 +31,7 @@ export async function POST (request: NextRequest) {
             shipping_options:[
                 {shipping_rate: "shr_1NK3wsGsSLAnNPJYUz5VGx3i"}
             ],
+            
 
             line_items:data.map((item:any)=>
             {
@@ -44,9 +53,15 @@ export async function POST (request: NextRequest) {
                 };
 
             }),
+            
+              
             success_url: `${request.headers.get("origin")}/success`,
             cancel_url: `${request.headers.get("origin")}/?canceled=true`,
           });
+        //   localStorage.removeItem("cartItems");
+    //     if (typeof window !== "undefined") {
+    //     localStorage.removeItem("cartItems");
+    //   }
           return NextResponse.json({session})
 
     }
