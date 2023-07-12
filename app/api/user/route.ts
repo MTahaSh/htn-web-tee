@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   const res = await db.select().from(cartTable).execute();
   return NextResponse.json({data:res})
   } catch (error) {
-    console.log((error as {message:string}).message);
+    // console.log((error as {message:string}).message);
         
         return  NextResponse.json({message:"Something went wrong!"})
     
@@ -33,11 +33,11 @@ export const POST = async (request: NextRequest) => {
           qty: req.qty
       }).returning();
       
-      console.log("Responseeee:"+res);
+      // console.log("Responseeee:"+res);
       return NextResponse.json({res})
       
   } catch (error) {
-      console.log(error);
+      // console.log(error);
       
       return NextResponse.json({message:"Something went wrong"})
   }
