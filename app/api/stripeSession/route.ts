@@ -15,13 +15,13 @@ export async function POST (request: NextRequest) {
     try {
     if(data.length > 0)
     {
-        const { submit_type } = data;
-      if (submit_type === "pay") {
+        // const { submit_type } = data;
+    //   if (submit_type === "pay") {
         // Clear cartItems from localStorage
-        if (typeof window !== "undefined") {
-          localStorage.removeItem("cartItems");
-        }
-      }
+    //     if (typeof window !== "undefined") {
+    //       localStorage.removeItem("cartItems");
+    //     }
+    //   }
 
         const session = await stripe.checkout.sessions.create({
             submit_type:"pay",

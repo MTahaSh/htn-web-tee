@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { actions } from 'use-shopping-cart';
+// import { auth } from '@clerk/nextjs'
+// import { stat } from 'fs';
 
-
+// const { userId, sessionId } = auth();
 
 export interface cartState {
   items: Array<any>;
@@ -146,6 +148,26 @@ export const cartSlice = createSlice({
         // localStorage.setItem("cartItems_" + localStorage.getItem("userId"), JSON.stringify(state.items));
       }
     },
+
+    // storeCart: (state:cartState) => {
+
+    //   const updateNewCartValues = async () => {
+      
+    //   const res = await fetch("/api/user", {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       userid: userId,
+    //       sessionid: sessionId,
+    //       productid: state.items,
+    //       qty: state.totalQuantity,
+
+    //     })
+    //   })
+      
+    // }
+
+    // },
+
 
     clearCart: (state: cartState) => {
       // state = initialState

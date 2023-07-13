@@ -21,6 +21,7 @@ export default authMiddleware({
     // handle users who aren't authenticated
     if (!auth.userId && !auth.isPublicRoute) {
       return redirectToSignIn({ returnBackUrl: req.url });
+      
     }
     // redirect them to organization selection page
     // if(auth.userId && !auth.orgId && req.nextUrl.pathname !== "/org-selection"){

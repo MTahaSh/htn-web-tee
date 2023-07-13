@@ -23,7 +23,7 @@ export const cartNewTable = pgTable("cartnew", {
   user_id: varchar("user_id", {
     length: 255,
   }),
-  session_id: varchar("session_id", {
+  product_qty: varchar("product_qty", {
     length: 255,
   }),
   product_id: varchar("product_id", {

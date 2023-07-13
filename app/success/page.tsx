@@ -1,22 +1,23 @@
-"use client"
+// "use client"
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '@/store/slice/cartSlice';
+import SuccessComp from './SuccessComp';
+import { auth } from '@clerk/nextjs';
 
 const CheckoutSuccess = () => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(cartActions.clearCart());
-  }, [dispatch]);
+  const { userId, sessionId } = auth();
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+    
+  //   dispatch(cartActions.clearCart());
+  // }, [dispatch]);
 
   return (
-    <div className="text-center flex">
-      <div className="flex justify-center items-center bg-yellow-400 w-full h-screen">
-        <h1 className="text-4xl font-bold">Congratulations! The payment has been processed successfully!</h1>
-      </div>
-    </div>
-  );
+    <SuccessComp userId={userId} sessionId={sessionId}/>
+  )
 };
 
 export default CheckoutSuccess;

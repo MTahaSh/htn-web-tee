@@ -27,10 +27,10 @@ export const POST = async (request: NextRequest) => {
   try {
       
       const res = await db.insert(cartNewTable).values({
-          user_id: req.userid as string,
-          session_id: req.sessionid as string,
-          product_id: req.productid,
-          qty: req.qty
+          user_id: req.user_id as string,
+          product_qty: req.product_qty,
+          product_id: req.product_id,
+          qty: req.qty,
       }).returning();
       
       // console.log("Responseeee:"+res);
