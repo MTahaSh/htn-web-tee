@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { cartActions } from '@/store/slice/cartSlice';
-
 import Link from 'next/link';
 
   
@@ -26,15 +25,16 @@ export default  function Hero({userId}:any) {
 
 
 
-  useEffect(() => {
-    if (!isSignedIn) {
+  // useEffect(() => {
+    if (!isSignedIn && !userId) {
       dispatch(cartActions.clearCart());
-    } else {
+      localStorage.setItem('userId', " ");
+    } else{
       
       localStorage.setItem('userId', userId ?? '');
       
     }
-  }, [isSignedIn, userId,dispatch]);
+  // }, [isSignedIn, userId,dispatch]);
 
  
   
