@@ -45,11 +45,11 @@ export async function POST (request: NextRequest) {
                     },
                     
                     quantity: item.quantity,
-                    adjustable_quantity: {
-                        enabled:true,
-                        minimum:1,
-                        maximum:10
-                    }
+                    // adjustable_quantity: {
+                    //     enabled:true,
+                    //     minimum:1,
+                    //     maximum:10
+                    // }
                 };
 
             }),
