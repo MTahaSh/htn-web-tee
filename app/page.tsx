@@ -10,6 +10,8 @@ import { Suspense } from 'react'
 import Album from '@/components/Album'
 import toast from 'react-hot-toast';
 import { SignUp } from "@clerk/nextjs";
+import Banner from '@/components/hero/Banner'
+
 
 export default function Home() {
   
@@ -31,8 +33,10 @@ export default function Home() {
   return (
     <>
     
+    
     <Hero userId={userId}/>
     <Product/>
+    <Banner/>
     
     </>
   )

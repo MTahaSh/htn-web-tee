@@ -53,7 +53,7 @@
       </div>
       
       
-      <div className="flex flex-wrap -m-4">
+      <div className="grid md:grid-flow-row lg:w-[90%] w-full  lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-5  mx-auto">
 
 
         {data.map((item)=>(

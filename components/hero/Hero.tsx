@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { cartActions } from '@/store/slice/cartSlice';
 import Link from 'next/link';
-
-  
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';  
 
 
 
@@ -46,6 +46,8 @@ export default  function Hero({userId}:any) {
 
     <div className='flex px-4 py-10  border-b-2 bg-green-500  border-gray-200'>
     <section className="text-gray-600 body-font">
+
+      
   <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col  items-center">
     <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col space-y-6  md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
       <h1 className="title-font sm:text-4xl text-5xl mb-4 font-bold text-white">The ultimate gaming experience, take it home with us
@@ -65,10 +67,33 @@ Unlock the gaming realm of your dreams at our Ecommerce site. Explore our curate
       <div className='bg-red-300 w-full z-[-1] opacity-50 right-20 h-full hidden lg:block rounded-full absolute'></div>
       <Image className='opacity-80' src={"/console.jpg"} alt='/' width={350} height={400}></Image>
     </div>
+
   </div>
+
+
+
+  {/* Slider div */}
+  
+  
+
+
+
+
 </section>
 
-    
+{/* <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      <SwiperSlide><Image src={"/banner.png"} width={500} height={500} alt='/'/> </SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+    </Swiper>
+     */}
 
 
     </div>

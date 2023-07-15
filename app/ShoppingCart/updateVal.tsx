@@ -11,7 +11,7 @@ import {db, cartTable} from "@/sanity/lib/drizzle"
 import { useUser } from '@clerk/nextjs';
 import { useEffect } from 'react'
 import { useRouter } from "next/navigation";
-
+import {HiOutlineShoppingBag} from "react-icons/hi"
 
 
 
@@ -23,6 +23,7 @@ export default function UpdateVal({userId,sessionId}:any) {
     const { isLoaded, isSignedIn, user } = useUser()
     const userName = user?.username;
     const { refresh } = useRouter();
+    const router = useRouter();
 
     
     // const [data,setData] = useState();
@@ -123,14 +124,21 @@ export default function UpdateVal({userId,sessionId}:any) {
   
   <section >
     <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-      <div className="mx-auto max-w-3xl">
-        <header className="text-center">
-          <h1 className="text-xl font-bold  text-gray-900 sm:text-3xl">Your Cart</h1>
+      <div className="mx-auto max-w-3xl ">
+
+        <header className={`flex text-center justify-center items-center space-y-10 p-32 flex-col ${totalQuantity == 0? "flex":"hidden"} `}>
+          
+          <h1 className="text-5xl font-bold  text-gray-900 "><HiOutlineShoppingBag className='text-center'/></h1>
+          <h1 className="text-3xl font-bold  text-gray-900 ">Cart is empty</h1>
+          <button onClick={()=>router.push("/Products")} className='px-5 py-3 border-2 border-black border-solid bg-transparent text-black hover:bg-black/90 hover:text-white transition-all delay-200 ease-in-out font-bold'>Shop now</button>
+          
+          </header>
+
+          
           {/* <h2>{userId}</h2>
           <h2>{sessionId}</h2>
           <div>{user?.firstName}</div>
           <div>{user?.username}</div> */}
-        </header>
   
   
   
@@ -199,7 +207,7 @@ export default function UpdateVal({userId,sessionId}:any) {
   
           </ul>
   
-          <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
+          <div className={`mt-8 flex justify-end border-t border-gray-100 pt-8 ${totalQuantity==0?"hidden":"block"} `}>
             <div className="w-screen max-w-lg space-y-4">
               <dl className="space-y-0.5 text-sm text-gray-700">
                 <div className="flex justify-between">
