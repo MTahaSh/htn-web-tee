@@ -68,7 +68,7 @@ export default async function Playstation() {
 
          
         item.category.name == "PlayStation"? 
-        <div className="lg:w-full h-full md:w-full sm:w-[90%] border-solid border-gray-200 border-2" >
+        <div key={item._id} className=" lg:w-full h-full md:w-full sm:w-[90%] border-solid border-gray-200 border-2" >
         <Link href={`/Products/${item._id}`} key={item._id} >
           <div className="flex  relative ">
             <Image alt="gallery" className="absolute inset-0 w-full max-h-[200px] h-full object-contain object-center" src={urlForImage(item.image).url()} width={400} height={400}></Image>
