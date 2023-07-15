@@ -4,18 +4,21 @@ import { Search, ShoppingCart, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/store/store'
-import { UserButton } from "@clerk/nextjs";
+import { SignUp, UserButton } from "@clerk/nextjs";
 import { useUser } from '@clerk/nextjs';
 import { SignIn } from "@clerk/nextjs";
-
+import toast from 'react-hot-toast';
+import  Toaster  from "react-hot-toast";
 import Link from "next/link";
-
+// import { auth } from "@clerk/nextjs";
 
 
 
 const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const [click,setClick] = useState(false)
+  // const {userId} = auth();
+
   
   const onClickHandler = ()=>{
     setClick(!click);
@@ -36,18 +39,18 @@ const Navbar = () => {
 
         <span><button onClick={onClickHandler}><X className="cursor-pointer"/></button></span>
 
-        <div className="space-y-16 flex-col flex">
-        <Link href={"/Xbox"}>Xbox</Link>
-        <Link href={"/Playstation"}>PlayStation</Link>
-        <Link href={"/Products"}>All Products</Link>
+        <div className="space-y-16 flex-col flex text-black/50 font-bold">
+        <Link className="hover:text-black ease-in-out delay-100 transition-all" href={"/Xbox"}>Xbox</Link>
+        <Link className="hover:text-black ease-in-out delay-100 transition-all" href={"/Playstation"}>PlayStation</Link>
+        <Link className="hover:text-black ease-in-out delay-100 transition-all" href={"/Products"}>All Products</Link>
         </div>
 
       </div>
 
-      <div className="space-x-16 lg:flex hidden">
-        <Link href={"/Xbox"}>Xbox</Link>
-        <Link href={"/Playstation"}>PlayStation</Link>
-        <Link href={"/Products"}>All Products</Link>
+      <div className="space-x-16 lg:flex hidden text-black/50 font-bold">
+        <Link className="hover:text-black ease-in-out delay-100 transition-all" href={"/Xbox"}>Xbox</Link>
+        <Link className="hover:text-black ease-in-out delay-100 transition-all" href={"/Playstation"}>PlayStation</Link>
+        <Link className="hover:text-black ease-in-out delay-100 transition-all " href={"/Products"}>All Products</Link>
         
       </div>
       <div className="lg:flex hidden">

@@ -5,8 +5,10 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '@/store/slice/cartSlice';
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
+import { useRouter } from 'next/navigation';
 
 const SuccessComp = ({userId,sessionId}:any) => {
+  const router = useRouter();
     const cartValue = useSelector((state:RootState)=> state.cartSlice.items);
     const dispatch = useDispatch();
     const totalQuantity = useSelector((state:RootState)=> state.cartSlice.totalQuantity);
@@ -39,8 +41,12 @@ useEffect(() => {
 
   return (
     <div className="text-center flex">
-      <div className="flex justify-center items-center bg-yellow-400 w-full h-screen">
+      <div className="flex justify-center items-center bg-white w-full h-screen flex-col space-y-8">
         <h1 className="text-4xl font-bold">Congratulations! The payment has been processed successfully!</h1>
+        <div className='border-black border-2 rounded-lg hover:bg-black hover:text-white font-bold'>
+        <button onClick={()=>{router.push("/")}} className='p-4  '>Continue Shopping</button>
+        </div>
+      
       </div>
     </div>
   )

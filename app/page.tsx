@@ -8,7 +8,8 @@ import { Image as IImage } from 'sanity'
 import { auth } from '@clerk/nextjs';
 import { Suspense } from 'react'
 import Album from '@/components/Album'
-
+import toast from 'react-hot-toast';
+import { SignUp } from "@clerk/nextjs";
 
 export default function Home() {
   
@@ -16,7 +17,11 @@ export default function Home() {
   
 
   
-  
+  // if(!userId)
+  // {
+  // toast.error("You seem like a new user! Would you like to Sign up?");
+  // // <SignUp/>
+  // }
   
 
   // Using onUserSignedOut event listener

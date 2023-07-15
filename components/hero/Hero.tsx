@@ -15,6 +15,7 @@ import Link from 'next/link';
   
 
 
+
 export default  function Hero({userId}:any) {
   const { isLoaded, isSignedIn, user } = useUser();
   const { refresh } = useRouter();
@@ -28,7 +29,9 @@ export default  function Hero({userId}:any) {
   // useEffect(() => {
     if (!isSignedIn && !userId) {
       dispatch(cartActions.clearCart());
+      
       localStorage.setItem('userId', " ");
+
     } else{
       
       localStorage.setItem('userId', userId ?? '');

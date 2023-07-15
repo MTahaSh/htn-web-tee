@@ -6,6 +6,7 @@ import Providers from '@/components/Provider'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Suspense } from 'react'
 import Album from '@/components/Album'
+import Notifcation from '@/components/hero/Notifcation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ClerkProvider>
         <Providers>
         <Suspense fallback={<Album/>}>
+        <Notifcation/>
         <Navbar/>
         {children}
         <Footer/>
