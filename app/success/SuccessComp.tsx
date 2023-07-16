@@ -42,7 +42,7 @@ const SuccessComp = ({ userId, sessionId }: any) => {
   useEffect(() => {
     updateNewCartValues();
     dispatch(cartActions.clearCart());
-  }, [dispatch, updateNewCartValues]);
+  }, [dispatch]);
 
   return (
     <div className="text-center flex items-center ">
