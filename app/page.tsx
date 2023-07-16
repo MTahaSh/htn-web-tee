@@ -11,6 +11,7 @@ import Album from '@/components/Album'
 import toast from 'react-hot-toast';
 import { SignUp } from "@clerk/nextjs";
 import Banner from '@/components/hero/Banner'
+import Stats from '@/components/hero/Stats'
 
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
     <Hero userId={userId}/>
     <Product/>
     <Banner/>
-    
+    <Stats/>
     </>
   )
 
