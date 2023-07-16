@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 import { SignUp } from "@clerk/nextjs";
 import Banner from '@/components/hero/Banner'
 import Stats from '@/components/hero/Stats'
+import Subscribe from '@/components/hero/Subscribe'
 
 
 export default function Home() {
@@ -39,6 +40,7 @@ export default function Home() {
     <Product/>
     <Banner/>
     <Stats/>
+    <Subscribe/>
     </>
   )
 

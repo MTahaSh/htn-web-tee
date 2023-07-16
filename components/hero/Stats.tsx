@@ -5,7 +5,7 @@ import { BsChatDots } from "react-icons/bs"
 
 const Stats = () => {
     return (
-        <div className='flex md:flex-row flex-col gap-x-5 px-6 py-10 md:space-y-0 space-y-10 transition-all delay-100 ease-in-out'>
+        <div className='flex md:flex-row flex-col gap-x-5 px-6 pt-16 pb-32 my-10 md:space-y-0 space-y-10 transition-all delay-100 ease-in-out border-b-2 border-gray-300'>
             <div className='flex flex-col items-center space-y-6 '>
                 <div>
                 <TiLocationArrowOutline className='lg:text-8xl md:text-6xl text-8xl text-gray-300' />

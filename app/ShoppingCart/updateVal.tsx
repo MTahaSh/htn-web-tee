@@ -128,8 +128,8 @@ export default function UpdateVal({userId,sessionId}:any) {
 
         <header className={`flex text-center justify-center items-center space-y-10 p-32 flex-col ${totalQuantity == 0? "flex":"hidden"} `}>
           
-          <h1 className="text-5xl font-bold  text-gray-900 "><HiOutlineShoppingBag className='text-center'/></h1>
-          <h1 className="text-3xl font-bold  text-gray-900 ">Cart is empty</h1>
+          <h1 className="text-8xl font-bold   text-gray-900 "><HiOutlineShoppingBag className='text-center'/></h1>
+          <h1 className="md:text-3xl text-xl font-bold  text-gray-900 ">Cart is empty</h1>
           <button onClick={()=>router.push("/Products")} className='px-5 py-3 border-2 border-black border-solid bg-transparent text-black hover:bg-black/90 hover:text-white transition-all delay-200 ease-in-out font-bold'>Shop now</button>
           
           </header>

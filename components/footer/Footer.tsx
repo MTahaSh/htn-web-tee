@@ -1,44 +1,19 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
+  const pathname = usePathname();
   return (
-    <div> 
+    <div className={`sticky w-full mt-10 ${pathname === "/sign-up" || pathname === "/sign-in"?"hidden":"flex"} `}> 
 
-<footer className="text-gray-600 body-font bg-green-500">
-  <div className="container px-5 py-24 flex md:items-center lg:items-start justify-between md:flex-row md:flex-nowrap flex-wrap flex-col">
-    <div className="w-64 flex-shrink-0 md:mx-0 mx-auto space-y-6 text-center md:text-left">
-      <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-        <Image src={"/logo.jpeg"} alt='/' width={200} height={200}></Image>
-        {/* <span className="ml-3 text-xl">ConsoleMania</span> */}
-      </a>
-      <p className="mt-2 text-sm text-white font-bold">Welcome to the world of consoles!</p>
-    </div>
-    <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10   justify-between text-center">
-      <div className=" w-full ">
-        <h2 className="title-font text-lg text-black font-bold tracking-widest mb-5">CATEGORIES</h2>
-        <nav className="list-none mb-10 space-y-5">
-          <li>
-            <a className="text-white hover:text-gray-800">Home</a>
-          </li>
-          <li>
-            <a className="text-white hover:text-gray-800">Privacy Policy</a>
-          </li>
-          <li>
-            <a className="text-white hover:text-gray-800">User guide</a>
-          </li>
-          <li>
-            <a className="text-white hover:text-gray-800">Other</a>
-          </li>
-        </nav>
-      </div>
-      
-    </div>
-  </div>
-  <div className="bg-white">
-    <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-      <p className="text-black text-sm text-center sm:text-left">© ConsoleMania -
-        <a href="https://www.linkedin.com/in/taha-sheikh-a86a90194/" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">MTR</a>
+<footer className="text-gray-600 body-font w-full mt-6 ">
+  <div className=" h-full py-6" style={{backgroundImage:"url('wallpaperFoot.jpg')", objectFit:"cover", width:"100%"}}>
+
+    <div className="container  mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row ">
+      <p className="text-gray-300 text-sm text-center sm:text-left">© ConsoleMania -
+        <a href="https://www.linkedin.com/in/taha-sheikh-a86a90194/" rel="noopener noreferrer" className="text-gray-300 ml-1" target="_blank">MTR</a>
       </p>
       <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
         <a className="text-gray-500">
