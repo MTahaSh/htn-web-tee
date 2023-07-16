@@ -19,7 +19,7 @@ const Stats = () => {
                 </div>
                 <h2 className='lg:text-2xl md:text-lg text-2xl font-bold '>Free Returns</h2>
                 <p className='lg:text-md md:text-sm text-md text-gray-500 text-center'>
-                Shop worry-free with Free Returns! Return your purchase at no extra cost if you're not satisfied. Hassle-free returns and customer satisfaction are our priorities. Shop confidently, knowing you can change your mind without additional fees.</p>
+                Shop worry-free with Free Returns! Return your purchase at no extra cost if you are not satisfied. Hassle-free returns and customer satisfaction are our priorities. Shop confidently, knowing you can change your mind without additional fees.</p>
             </div>
             <div className='flex flex-col items-center space-y-6'>
                 <div>
