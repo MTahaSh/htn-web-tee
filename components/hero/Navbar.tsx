@@ -19,7 +19,13 @@ const Navbar = () => {
   const pathname = usePathname();
   const { isLoaded, isSignedIn, user } = useUser();
   const [click,setClick] = useState(false)
+  const [search,setSearch] = useState(false)
   // const {userId} = auth();
+
+  const onClickSearch = ()=>{
+    setSearch(!search);
+  
+  }
 
   
   const onClickHandler = ()=>{
@@ -32,7 +38,7 @@ const Navbar = () => {
   return (
     <div className={`relative h-full z-10 ${pathname === "/sign-up" || pathname === "/sign-in"?"hidden":"flex"}`}>
     
-    <nav className="flex shadow-gray-200   shadow-sm  justify-between items-center h-20 px-5  w-full bg-white ">
+    <nav className="flex shadow-gray-200 shadow-sm  justify-between items-center h-20 px-5  w-full bg-white ">
       
       <button onClick={onClickHandler}><Menu  className="lg:hidden flex cursor-pointer"/></button>
       {/* <Link href={"/"}><Image src={"/logoRemove.png"} alt="website logo" width={200} height={200} /></Link> */}
@@ -42,6 +48,15 @@ const Navbar = () => {
       <div className={`${click? "left-0":"left-[-500px]"}  ease-in duration-500 space-y-10 text-white flex flex-col absolute inset-0 lg:hidden  h-screen p-6   w-1/2 bg-gray-400`}>
 
         <span><button onClick={onClickHandler}><X className="cursor-pointer"/></button></span>
+
+        <div className="flex items-center relative">
+        <button onClick={onClickSearch}><Search className="bg-transparent mr-2 rounded-l cursor-pointer" />{" "}</button>
+        <input
+          type="text"
+          placeholder="What are you looking for?"
+          className={`rounded-r outline-1 w-4/5 px-2 border-2 border-black placeholder:text-black placeholder:text-md overflow-hidden outline-solid outline-black bg-transparent transition-all delay-0 ease-in ${search?"flex left-0 opacity-1 z-1 relative":"opacity-0 z-[-1]  relative left-8 "}`}
+        ></input>
+        </div>
 
         <div className="space-y-8 flex-col flex text-black/50 font-bold relative">
         <div className="p-2 rounded-full bg-gray-300">
@@ -70,13 +85,15 @@ const Navbar = () => {
         <Link className="hover:text-black ease-in-out focus:text-black focus:border-b-2 focus:border-gray-600 delay-100 transition-all " href={"/Products"}>All Products</Link>
         
       </div>
-      <div className="lg:flex hidden">
-        <Search className="bg-white rounded-l" />{" "}
+      <div className="lg:flex hidden ">
+        <div className="flex items-center relative">
+        <button onClick={onClickSearch}><Search className="bg-white mx-4 rounded-l cursor-pointer" />{" "}</button>
         <input
           type="text"
           placeholder="What you are looking for"
-          className="rounded-r"
+          className={`rounded-r focus:outline-0  transition-all delay-0 ease-in ${search?"flex right-0 opacity-1 z-1 relative":"opacity-0 z-[-1]  fixed right-16 "}`}
         ></input>
+        </div>
       </div>
       <div className={`border-4 rounded-full border-green-500 ${!isSignedIn?"hidden":"flex"}`}>
       <UserButton  afterSignOutUrl="/"/>

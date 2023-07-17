@@ -7,7 +7,7 @@ const Subscribe = () => {
             <h1 className='text-3xl font-bold'>Subscribe to our newsletter</h1>
             <p>Stay informed and never miss out on updates - subscribe to our newsletter!</p>
         </div>
-        <div className='border-b-2 border-gray-500 w-2/5 outline-none '><input type="text" /></div>
+        <div className='border-b-2 border-gray-500 w-2/5  '><input className='focus:outline-0 ' type="text"  /></div>
         <div>
             <button className='px-10 py-4 bg-transparent border-2 border-black'>Subscribe</button>
         </div>
